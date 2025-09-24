@@ -1,0 +1,4 @@
+GET / HTTP/1.0
+Accept: text/html
+User-Agent: Matrix/1.0
+
