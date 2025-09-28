@@ -49,10 +49,9 @@ int main(int argc, char **argv) {
   CHECK(send(sockfd, buf, 1024, 0) != -1);
 
   // receive response and dump to screen
-  const size_t bufSize = 10 * 1024 * 1024;
-  uint8_t *buf_2 = malloc(bufSize);
-  CHECK(buf_2 != NULL);
-
+  const size_t bufSize =
+      10 * 1024; // 10 KiB as said by professor golab inside of the piazza post
+  uint8_t buf_2[bufSize];
   size_t rcvd = 0, space = bufSize;
 
   do {
@@ -67,7 +66,6 @@ int main(int argc, char **argv) {
   // dump response to screen
   write(1, buf_2, rcvd);
 
-  free(buf_2);
   freeaddrinfo(server);
   CHECK(close(sockfd) != -1);
 
